@@ -18,15 +18,17 @@ combine();
   // Return a function that when invoked increments and returns a counter variable.
 
   const counter = () => {
-    counter = 0;
-    function newCounter() {
-      return counter += 1;
+    let count = 0;
+    return function() {
+      count +=1;
+      return count;
     }
-    newCounter();
-    newCounter();
-    newCounter();
-    console.log(counter);
   }
+
+  const newCounter = counter();
+  console.log(newCounter());
+  console.log(newCounter());
+  console.log(newCounter());
 
   // Don't think that's right as it says the variable is undefined (???), but I'm mentally exhausted and it's all I've got
 // Example usage: const newCounter = counter();
