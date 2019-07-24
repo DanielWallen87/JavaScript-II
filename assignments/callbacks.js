@@ -74,20 +74,15 @@ console.log(calculator("Dog", items, contains));
 
 /* STRETCH PROBLEM */
 
-let duplicateArr = [1, 1, 2, 2, 3, 3];
-let duplicates;
-
-let removeDuplicates = function(array, cb) {
-  let conversion = function() {
-    let uniqueConvert = new Set(duplicateArr);
-    let uniqueArray = [...uniqueConvert];
-    return uniqueArray;
-  }
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+
+const removeDuplicates = function () {
+  let arr = [1, 1, 2, 2, 3, 3];
+  return arr.filter ((item, index) => { // establishes a new array will be created from below "filters/exclusions"
+    return arr.indexOf(item) >= index; // only returns arrays greater than current index, which eliminates repeats as those would return an index of -1
+  })
 }
 
 console.log(removeDuplicates());
-
-//Stumped on the above problem, may try again later if time allows
