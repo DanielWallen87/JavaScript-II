@@ -27,29 +27,62 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
 function getLength(arr, cb) {
   // getLength passes the length of the array into the callback.
+  return cb(arr.length);
 }
 
-function last(arr, cb) {
+getLength(items, function(length) {
+  console.log(length);
+});
+
+function lastItem(arr, cb) {
   // last passes the last item of the array into the callback.
+  return cb(arr[arr.length - 1]);
+}
+
+lastItem(items, function(last) {
+  console.log(last);
+});
+
+// Creating calculator to use for the next two math related problems
+
+function calculator(firstNum, secondNum, operator) {
+  return operator(firstNum, secondNum);
 }
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
+  return x + y;
 }
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
+  return x * y;
 }
+
+console.log(calculator(1, 2, sumNums));
+console.log(calculator(3, 5, multiplyNums));
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
+  if (list.includes(item)) return true;
+  else return false;
 }
+
+console.log(calculator("Gum", items, contains));
+console.log(calculator("Dog", items, contains));
 
 /* STRETCH PROBLEM */
 
-function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+
+const removeDuplicates = function () {
+  let arr = [1, 1, 2, 2, 3, 3];
+  return arr.filter ((item, index) => { // establishes a new array will be created from below "filters/exclusions"
+    return arr.indexOf(item) >= index; // only returns arrays greater than current index, which eliminates repeats as those would return an index of -1
+  })
 }
+
+console.log(removeDuplicates());
